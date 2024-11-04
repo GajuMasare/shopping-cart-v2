@@ -13,7 +13,7 @@ function App() {
           <div className="w-full md:w-[35%] bg-white rounded-md shadow-md ">
             <ProductList />
           </div>
-          <div className="w-full md:w-[60%] bg-white rounded-md shadow-md ">
+          <div className="w-full md:w-[60%] bg-white rounded-md shadow-md mt-2 md:mt-0 overflow-auto">
             <CartSummary />
           </div>
         </section>
