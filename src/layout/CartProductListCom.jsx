@@ -21,7 +21,7 @@ const CartProductListCom = ({ product, savings }) => {
   const newPrice = originalPrice - savings;
   return (
     <>
-      <div className="flex mb-4 justify-between text-sm md:text-lg  ">
+      <div className="flex mb-4 justify-between text-sm md:text-lg h-0 ">
         <div>
           <p className="w-12 ">{product.name}</p>
         </div>

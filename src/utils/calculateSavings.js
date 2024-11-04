@@ -1,6 +1,10 @@
 export const calculateSavings = (item) => {
   let savings = 0;
 
+  if (!item || typeof item !== "object") {
+    return savings; // Return 0 savings if item is not valid
+  }
+
   // Example logic for savings
   if (item.name.toLowerCase() === "soup" && item.quantity > 0) {
     savings += (item.price / 2) * item.quantity; // Assume half-price bread with soup
