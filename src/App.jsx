@@ -1,13 +1,22 @@
+import { useSelector } from "react-redux";
 import CartSummary from "./components/CartSummary";
 import ProductList from "./components/ProductList";
+import { selectAllProducts } from "../src/features/products/productsSelector";
 
 function App() {
+  const products = useSelector(selectAllProducts);
+  // console.log(products);
   return (
     <>
-      <div className="container mx-auto p-4">
-        <h1 className="text-2xl font-bold text-center mb-4">Billing App</h1>
-        <ProductList />
-        <CartSummary />
+      <div className="flex flex-col items-center justify-center min-h-screen">
+        <section className="flex flex-col md:flex-row  w-[80%] h-[90vh] justify-between">
+          <div className="w-full md:w-[35%] bg-white rounded-md shadow-md ">
+            <ProductList />
+          </div>
+          <div className="w-full md:w-[60%] bg-white rounded-md shadow-md ">
+            <CartSummary />
+          </div>
+        </section>
       </div>
     </>
   );
