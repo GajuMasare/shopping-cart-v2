@@ -30,15 +30,20 @@ export const calculateCartSummary = (cartItems) => {
     // Update total savings
     savings += itemSavings;
 
-    // Return item data with specific savings and new price
+    // Return item data with specific savings and new price, rounding values
     return {
       ...item,
-      itemSavings,
-      newPrice: itemSubtotal - itemSavings,
+      itemSavings: parseFloat(itemSavings.toFixed(2)),
+      newPrice: parseFloat((itemSubtotal - itemSavings).toFixed(2)),
     };
   });
 
-  total = subtotal - savings;
+  total = parseFloat((subtotal - savings).toFixed(2));
 
-  return { subtotal, total, savings, itemsWithSavings };
+  return {
+    subtotal: parseFloat(subtotal.toFixed(2)),
+    total,
+    savings: parseFloat(savings.toFixed(2)),
+    itemsWithSavings,
+  };
 };
