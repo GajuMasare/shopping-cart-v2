@@ -1,35 +1,32 @@
 import React from "react";
 import CartProductListCom from "../layout/CartProductListCom";
 import { useSelector } from "react-redux";
-import { calculateTotals } from "../utils/calculateTotals";
-import { calculateSavings } from "../utils/calculateSavings";
+import { calculateCartSummary } from "../utils/calculateCartSummary";
 
 const CartSummary = () => {
   const cartItems = useSelector((state) => state.cart.items);
 
-  // Ensure that cartItems is an array
-  const { subtotal, total, savings } = calculateTotals(cartItems);
+  const { subtotal, total, savings, itemsWithSavings } =
+    calculateCartSummary(cartItems);
 
-  console.log("Cart items:", cartItems);
+  console.log("Cart items with savings:", itemsWithSavings);
 
   return (
     <div className="p-5">
       <div className="text-sm md:text-2xl font-semibold md:font-bold mb-5">
         Summary
       </div>
-      {cartItems && cartItems.length > 0 ? (
-        cartItems.map((product) => {
-          const savingsForProduct = calculateSavings(product);
-          return (
-            <div key={product.id}>
-              <CartProductListCom
-                product={product}
-                savings={savingsForProduct}
-              />
-              <hr className="border-1 mb-3 bg-gray-400" />
-            </div>
-          );
-        })
+      {itemsWithSavings && itemsWithSavings.length > 0 ? (
+        itemsWithSavings.map((product) => (
+          <div key={product.id}>
+            <CartProductListCom
+              product={product}
+              savings={product.itemSavings}
+              newPrice={product.newPrice}
+            />
+            <hr className="border-1 mb-3 bg-gray-400" />
+          </div>
+        ))
       ) : (
         <div className="text-center text-gray-500">Your cart is empty.</div>
       )}
