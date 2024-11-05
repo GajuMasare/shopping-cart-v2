@@ -18,8 +18,8 @@ export const calculateCartSummary = (cartItems) => {
     }
 
     if (item.name.toLowerCase() === "butter") {
-      const freeButter = Math.floor(item.quantity / 3);
-      itemSavings += item.price * freeButter; // Buy 2 get 1 free for butter
+      const discount = item.price / 3; // 33.33% off butter
+      itemSavings += discount * item.quantity;
     }
 
     if (item.name.toLowerCase() === "cheese") {

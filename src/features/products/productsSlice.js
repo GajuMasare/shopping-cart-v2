@@ -26,7 +26,7 @@ const productsSlice = createSlice({
       name: "Butter",
       price: 120,
       image: "/butter.jpeg",
-      offer: "Buy 2 and get 1 free!",
+      offer: "Get a third off butter!",
       quantity: 3,
     },
   ],
