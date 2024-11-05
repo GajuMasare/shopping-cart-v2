@@ -2,6 +2,7 @@ import React from "react";
 import CartProductListCom from "../layout/CartProductListCom";
 import { useSelector } from "react-redux";
 import { calculateCartSummary } from "../utils/calculateCartSummary";
+import saveToFirestore from "../utils/saveToFirestore";
 
 const CartSummary = () => {
   const cartItems = useSelector((state) => state.cart.items);
@@ -11,6 +12,9 @@ const CartSummary = () => {
 
   console.log("Cart items with savings:", itemsWithSavings);
 
+  const handleSave = () => {
+    saveToFirestore(cartItems);
+  };
   return (
     <div className="p-5">
       <div className="text-sm md:text-2xl font-semibold md:font-bold mb-5">
@@ -42,6 +46,12 @@ const CartSummary = () => {
         <div className="flex font-bold justify-between mt-2">
           Total: <span>₹{total}</span>
         </div>
+        <button
+          onClick={handleSave}
+          className="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 w-full"
+        >
+          save to firebase
+        </button>
       </div>
     </div>
   );

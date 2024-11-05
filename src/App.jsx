@@ -6,6 +6,7 @@ import { selectAllProducts } from "../src/features/products/productsSelector";
 function App() {
   const products = useSelector(selectAllProducts);
   // console.log(products);
+
   return (
     <>
       <div className="flex flex-col items-center justify-center min-h-screen">
